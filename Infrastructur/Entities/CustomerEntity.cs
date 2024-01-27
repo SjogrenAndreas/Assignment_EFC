@@ -21,7 +21,14 @@ namespace Infrastructur.Entities
         public int PhoneNumberId { get; set; }
         public PhoneNumberEntity PhoneNumber { get; set; } = null!;
 
-        
+        public int AddressId { get; set; }
+        public AddressEntity Address { get; set; } = null!;
+
+        public int CompanyId { get; set; }
+        public CompanyEntity Company { get; set; } = null!;
+
+        public int RoleId { get; set; }
+        public RoleEntity Role { get; set; } = null!;
 
 
     }
