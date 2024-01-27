@@ -12,13 +12,17 @@ namespace Infrastructur.Entities
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public string? Name { get; set; }
+        public string FirstName { get; set; } = null!;
 
-        [Required]
-        public string? Name { get; set; }
+        public string LastName { get; set; } = null!;
 
-        [Required]
-        public string? Name { get; set; }
+        public string Email { get; set; } = null!;
+
+        public int PhoneNumberId { get; set; }
+        public PhoneNumberEntity PhoneNumber { get; set; } = null!;
+
+        
+
+
     }
 }
