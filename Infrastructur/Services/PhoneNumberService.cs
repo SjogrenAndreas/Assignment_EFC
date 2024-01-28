@@ -17,17 +17,17 @@ namespace Infrastructur.Services
             _phoneNumberRepository = phoneNumberRepository;
         }
 
-        public PhoneNumberEntity CreatePhoneNumber(string workPhone, string postalCode)
+        public PhoneNumberEntity CreatePhoneNumber(string workPhone, string mobilePhone)
         {
-            var phoneNumberEntity = _phoneNumberRepository.Get(x => x.WorkPhone == workPhone && x.MobilePhone == postalCode);
-            phoneNumberEntity ??= _phoneNumberRepository.Create(new PhoneNumberEntity { WorkPhone = workPhone, MobilePhone = postalCode });
+            var phoneNumberEntity = _phoneNumberRepository.Get(x => x.WorkPhone == workPhone && x.MobilePhone == mobilePhone);
+            phoneNumberEntity ??= _phoneNumberRepository.Create(new PhoneNumberEntity { WorkPhone = workPhone, MobilePhone = mobilePhone });
 
             return phoneNumberEntity;
         }
 
-        public PhoneNumberEntity GetPhoneNumber(string workPhone, string postalCode)
+        public PhoneNumberEntity GetPhoneNumber(string workPhone, string mobilePhone)
         {
-            var phoneNumberEntity = _phoneNumberRepository.Get(x => x.WorkPhone == workPhone && x.MobilePhone == postalCode );
+            var phoneNumberEntity = _phoneNumberRepository.Get(x => x.WorkPhone == workPhone && x.MobilePhone == mobilePhone );
             return phoneNumberEntity;
         }
 
