@@ -8,8 +8,9 @@ using Presentation.ConsoleApp;
 
 var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
 {
-    services.AddDbContext<DataContext>(x => x.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Skola\Assignment_EFC\Infrastructur\Data\local_database.mdf;Integrated Security=True"));
-    
+    services.AddDbContext<DataContext>(options =>
+        options.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Skola\Assignment_EFC\Infrastructur\Data\local_database.mdf;Integrated Security=True"));
+
     services.AddScoped<AddressRepository>();
     services.AddScoped<CompanyRepository>();
     services.AddScoped<CustomerRepository>();
@@ -17,14 +18,15 @@ var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
     services.AddScoped<RoleRepository>();
 
     services.AddScoped<AddressService>();
-    services.AddScoped<CompanyService>();  
-    services.AddScoped<CustomerService>(); 
-    services.AddScoped<PhoneNumberService>();  
+    services.AddScoped<CompanyService>();
+    services.AddScoped<CustomerService>();
+    services.AddScoped<PhoneNumberService>();
     services.AddScoped<RoleService>();
 
     services.AddSingleton<ConsoleUI>();
-    
 
 }).Build();
 
-var consoleUI = builder.Services.GetRequiredService<ConsoleUI>();  
+// Hämta och starta ConsoleUI
+var consoleUI = builder.Services.GetRequiredService<ConsoleUI>();
+consoleUI.Start();
