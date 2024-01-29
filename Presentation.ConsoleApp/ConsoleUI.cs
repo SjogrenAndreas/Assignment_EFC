@@ -7,5 +7,6 @@ namespace Presentation.ConsoleApp
 {
    public class ConsoleUI
     {
+
     }
 }
