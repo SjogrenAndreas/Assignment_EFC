@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructur.Repositories
 {
-    internal class CompanyRepository : Repo<CompanyEntity>
+    public class CompanyRepository : Repo<CompanyEntity>
     {
         public CompanyRepository(DataContext context) : base(context)
         {

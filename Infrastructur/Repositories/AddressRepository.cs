@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructur.Repositories
 {
-    internal class AddressRepository : Repo<AddressEntity>
+    public class AddressRepository : Repo<AddressEntity>
     {
         public AddressRepository(DataContext context) : base(context)
         {

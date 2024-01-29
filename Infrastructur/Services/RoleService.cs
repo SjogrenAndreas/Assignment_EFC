@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructur.Services
 {
-    internal class RoleService
+    public class RoleService
     {
         private readonly RoleRepository _roleRepository;
 

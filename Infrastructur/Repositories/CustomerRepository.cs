@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructur.Repositories
 {
-    internal class CustomerRepository : Repo<CustomerEntity>
+    public class CustomerRepository : Repo<CustomerEntity>
     {
         public CustomerRepository(DataContext context) : base(context)
         {

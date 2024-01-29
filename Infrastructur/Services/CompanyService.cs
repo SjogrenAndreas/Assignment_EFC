@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructur.Services
 {
-    internal class CompanyService
+    public class CompanyService
     {
         private readonly CompanyRepository _companyRepository;
 

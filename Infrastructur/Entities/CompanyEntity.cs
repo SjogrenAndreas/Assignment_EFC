@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructur.Entities
 {
-    internal class CompanyEntity
+    public class CompanyEntity
     {
         [Key]
         public int Id { get; set; }

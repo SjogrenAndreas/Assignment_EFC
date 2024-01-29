@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructur.Repositories
 {
-    internal class PhoneNumberRepository : Repo<PhoneNumberEntity>
+    public class PhoneNumberRepository : Repo<PhoneNumberEntity>
     {
         public PhoneNumberRepository(DataContext context) : base(context)
         {

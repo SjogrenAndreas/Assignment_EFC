@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructur.Entities
 {
-    internal class PhoneNumberEntity
+    public class PhoneNumberEntity
     {
         [Key]
         public int Id { get; set; }

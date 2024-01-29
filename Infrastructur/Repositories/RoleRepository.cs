@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructur.Repositories
 {
-    internal class RoleRepository : Repo<RoleEntity>
+    public class RoleRepository : Repo<RoleEntity>
     {
         public RoleRepository(DataContext context) : base(context)
         {

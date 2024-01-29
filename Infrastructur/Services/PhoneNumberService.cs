@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructur.Services
 {
-    internal class PhoneNumberService
+    public class PhoneNumberService
     {
         private readonly PhoneNumberRepository _phoneNumberRepository;
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructur.Services
 {
-    internal class AddressService
+    public class AddressService
     {
         private readonly AddressRepository _addressRepository;
 

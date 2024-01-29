@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructur.Repositories
 {
-    internal class Repo<TEntity> where TEntity : class
+    public class Repo<TEntity> where TEntity : class
     {
         private readonly DataContext _context;
 
