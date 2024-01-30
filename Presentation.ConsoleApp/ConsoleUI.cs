@@ -177,8 +177,17 @@ namespace Presentation.ConsoleApp
 
                 if (customer != null)
                 {
-                    Console.WriteLine($"Customer Found: {customer.FirstName} {customer.LastName}, Email: {customer.Email}");
-                    // Skriv ut mer information om kunden om det behövs
+                    Console.WriteLine("Customer Found:");
+                    Console.WriteLine($"First Name: {customer.FirstName}");
+                    Console.WriteLine($"Last Name: {customer.LastName}");
+                    Console.WriteLine($"Email: {customer.Email}");
+                    Console.WriteLine($"Role Name: {customer.Role.Role}"); 
+                    Console.WriteLine($"Street Name: {customer.Address.StreetName}"); 
+                    Console.WriteLine($"Postal Code: {customer.Address.PostalCode}");
+                    Console.WriteLine($"City: {customer.Address.City}");
+                    Console.WriteLine($"Work Phone: {customer.PhoneNumber.WorkPhone}"); 
+                    Console.WriteLine($"Mobile Phone: {customer.PhoneNumber.MobilePhone}");
+                    Console.WriteLine($"Company Name: {customer.Company.CompanyName}"); 
                 }
                 else
                 {
@@ -195,13 +204,115 @@ namespace Presentation.ConsoleApp
         private void ListAllCustomers()
         {
             Console.WriteLine("List All Customers.");
-            // Lägg till logik för att lista alla kunder här.
+
+            try
+            {
+                var customers = _customerService.GetCustomers();
+
+                foreach (var customer in customers)
+                {
+                    Console.WriteLine($"First Name: {customer.FirstName}");
+                    Console.WriteLine($"Last Name: {customer.LastName}");
+                    Console.WriteLine($"Email: {customer.Email}");
+                    Console.WriteLine("-------------------------");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
         }
 
         private void UpdateCustomer()
         {
             Console.WriteLine("Update Customer.");
-            // Lägg till logik för att uppdatera en kund här.
+            Console.WriteLine("Choose search method:");
+            Console.WriteLine("1. By Email");
+            Console.WriteLine("2. By ID");
+            Console.Write("Enter choice (1 or 2): ");
+
+            var choice = Console.ReadLine();
+            CustomerEntity customer = null;
+
+            try
+            {
+                switch (choice)
+                {
+                    case "1":
+                        Console.Write("Enter Email: ");
+                        var email = Console.ReadLine();
+                        customer = _customerService.GetCustomerByEmail(email);
+                        break;
+                    case "2":
+                        Console.Write("Enter ID: ");
+                        var idSuccess = int.TryParse(Console.ReadLine(), out int id);
+                        if (!idSuccess)
+                        {
+                            Console.WriteLine("Invalid ID format.");
+                            return;
+                        }
+                        customer = _customerService.GetCustomerById(id);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        return;
+                }
+
+                if (customer != null)
+                {
+                    // Visa befintlig kundinformation
+                    Console.WriteLine("Customer Found:");
+                    Console.WriteLine($"First Name: {customer.FirstName}");
+                    Console.WriteLine($"Last Name: {customer.LastName}");
+                    Console.WriteLine($"Email: {customer.Email}");
+                    Console.WriteLine($"Role Name: {customer.Role.Role}");
+                    Console.WriteLine($"Street Name: {customer.Address.StreetName}");
+                    Console.WriteLine($"Postal Code: {customer.Address.PostalCode}");
+                    Console.WriteLine($"City: {customer.Address.City}");
+                    Console.WriteLine($"Work Phone: {customer.PhoneNumber.WorkPhone}");
+                    Console.WriteLine($"Mobile Phone: {customer.PhoneNumber.MobilePhone}");
+                    Console.WriteLine($"Company Name: {customer.Company.CompanyName}");
+
+                    // Fråga användaren om uppdateringar
+                    Console.WriteLine("Enter new values (leave blank to keep current):");
+
+                    Console.Write("New First Name: ");
+                    var newFirstName = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(newFirstName)) customer.FirstName = newFirstName;
+
+                    Console.Write("New Last Name: ");
+                    var newLastName = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(newLastName)) customer.LastName = newLastName;
+
+                    Console.Write("New Email: ");
+                    var newEmail = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(newEmail)) customer.Email = newEmail;
+
+                    // Exempel på uppdatering av Address
+                    Console.Write("New Street Name: ");
+                    var newStreetName = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(newStreetName)) customer.Address.StreetName = newStreetName;
+
+                    // Liknande logik för att uppdatera PostalCode, City, PhoneNumber, Company, etc.
+
+                    // Antag att det finns en metod för att spara den uppdaterade Address:
+                    
+
+                    // Upprepa liknande process för PhoneNumber, Company, etc.
+
+                    // Spara de uppdaterade kunduppgifterna
+                    _customerService.UpdateCustomer(customer);
+                    Console.WriteLine("Customer updated successfully!");
+                }
+                else
+                {
+                    Console.WriteLine("Customer not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error occurred: {ex.Message}");
+            }
         }
 
         private void DeleteCustomer()
