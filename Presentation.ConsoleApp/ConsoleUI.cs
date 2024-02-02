@@ -288,17 +288,30 @@ namespace Presentation.ConsoleApp
                     var newEmail = Console.ReadLine();
                     if (!string.IsNullOrEmpty(newEmail)) customer.Email = newEmail;
 
-                    // Exempel på uppdatering av Address
+                    
                     Console.Write("New Street Name: ");
                     var newStreetName = Console.ReadLine();
                     if (!string.IsNullOrEmpty(newStreetName)) customer.Address.StreetName = newStreetName;
 
-                    // Liknande logik för att uppdatera PostalCode, City, PhoneNumber, Company, etc.
+                    Console.Write("New Postalcode Name: ");
+                    var newPostalCode = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(newPostalCode)) customer.Address.PostalCode = newPostalCode;
 
-                    // Antag att det finns en metod för att spara den uppdaterade Address:
-                    
+                    Console.Write("New City: ");
+                    var newCity = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(newCity)) customer.Address.City = newCity;
 
-                    // Upprepa liknande process för PhoneNumber, Company, etc.
+                    Console.Write("New Work Phone number: ");
+                    var newWorkPhone = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(newWorkPhone)) customer.PhoneNumber.WorkPhone = newWorkPhone;
+
+                    Console.Write("New Mobile Number: ");
+                    var newMobilePhone = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(newMobilePhone)) customer.PhoneNumber.MobilePhone = newMobilePhone;
+
+                    Console.Write("New Company: ");
+                    var newCompanyName = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(newCompanyName)) customer.Company.CompanyName = newCompanyName;
 
                     // Spara de uppdaterade kunduppgifterna
                     _customerService.UpdateCustomer(customer);
