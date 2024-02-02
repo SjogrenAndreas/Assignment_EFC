@@ -75,9 +75,17 @@ namespace Infrastructur.Services
         }
 
 
-        public void DeleteCustomer(int id)
+        public bool DeleteCustomer(int id)
         {
-            _customerRepository.Delete(x => x.Id == id);
+            try
+            {
+                _customerRepository.Delete(x => x.Id == id);
+                return true; // Antag att raderingen lyckades
+            }
+            catch
+            {
+                return false; // Raderingen misslyckades
+            }
         }
     }
 }

@@ -331,7 +331,68 @@ namespace Presentation.ConsoleApp
         private void DeleteCustomer()
         {
             Console.WriteLine("Delete Customer.");
-            // Lägg till logik för att ta bort en kund här.
+            Console.WriteLine("Choose search method:");
+            Console.WriteLine("1. By Email");
+            Console.WriteLine("2. By ID");
+            Console.Write("Enter choice (1 or 2): ");
+
+            var choice = Console.ReadLine();
+            CustomerEntity customer = null;
+
+            try
+            {
+                switch (choice)
+                {
+                    case "1":
+                        Console.Write("Enter Email: ");
+                        var email = Console.ReadLine();
+                        customer = _customerService.GetCustomerByEmail(email);
+                        break;
+                    case "2":
+                        Console.Write("Enter ID: ");
+                        var idSuccess = int.TryParse(Console.ReadLine(), out int id);
+                        if (!idSuccess)
+                        {
+                            Console.WriteLine("Invalid ID format.");
+                            return;
+                        }
+                        customer = _customerService.GetCustomerById(id);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        return;
+                }
+
+                if (customer != null)
+                {
+                    // Visa kundinformation
+                    Console.WriteLine($"First Name: {customer.FirstName}");
+                    Console.WriteLine($"Last Name: {customer.LastName}");
+                    Console.WriteLine($"Email: {customer.Email}");
+
+                    // Fråga om bekräftelse
+                    Console.WriteLine("Are you sure you want to delete this customer? (yes/no)");
+                    var confirmation = Console.ReadLine();
+                    if (confirmation.ToLower() == "yes")
+                    {
+                        _customerService.DeleteCustomer(customer.Id);
+                        Console.WriteLine("Customer deleted successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Operation cancelled.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Customer not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error occurred: {ex.Message}");
+            }
         }
+
     }
 }
