@@ -8,8 +8,7 @@ using Presentation.ConsoleApp;
 
 var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
 {
-    services.AddDbContext<DataContext>(options =>
-        options.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Skola\Assignment_EFC\Infrastructur\Data\local_database.mdf;Integrated Security=True"));
+    services.AddDbContext<DataContext>(options => options.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Skola\Assignment_EFC\Infrastructur\Data\local_database.mdf;Integrated Security=True"));
 
     services.AddScoped<AddressRepository>();
     services.AddScoped<CompanyRepository>();
@@ -23,7 +22,7 @@ var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
     services.AddScoped<PhoneNumberService>();
     services.AddScoped<RoleService>();
 
-    services.AddSingleton<ConsoleUI>();
+    services.AddScoped<ConsoleUI>();
 
 }).Build();
 
