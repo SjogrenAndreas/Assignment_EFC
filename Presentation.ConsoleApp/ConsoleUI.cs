@@ -137,6 +137,7 @@ namespace Presentation.ConsoleApp
                 // Hantera eventuella fel
                 Console.WriteLine($"Error creating customer: {ex.Message}");
             }
+            Console.ReadKey();  
         }
 
         private void SearchCustomer()
@@ -198,6 +199,8 @@ namespace Presentation.ConsoleApp
             {
                 Console.WriteLine($"Error occurred: {ex.Message}");
             }
+
+            Console.ReadKey();
         }
 
 
@@ -221,6 +224,7 @@ namespace Presentation.ConsoleApp
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
+            Console.ReadKey();
         }
 
         private void UpdateCustomer()
@@ -326,6 +330,7 @@ namespace Presentation.ConsoleApp
             {
                 Console.WriteLine($"Error occurred: {ex.Message}");
             }
+            Console.ReadKey();
         }
 
         private void DeleteCustomer()
@@ -392,6 +397,8 @@ namespace Presentation.ConsoleApp
             {
                 Console.WriteLine($"Error occurred: {ex.Message}");
             }
+
+            Console.ReadKey();
         }
 
     }

@@ -8,7 +8,7 @@ using Presentation.ConsoleApp;
 
 var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
 {
-    services.AddDbContext<DataContext>(options => options.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Skola\Assignment_EFC\Infrastructur\Data\local_database.mdf;Integrated Security=True"));
+    services.AddDbContext<DataContext>(options => options.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Skola\Assignment_EFC\Infrastructur\Data\local_database.mdf;Integrated Security=True;Connect Timeout=30"));
 
     services.AddScoped<AddressRepository>();
     services.AddScoped<CompanyRepository>();
